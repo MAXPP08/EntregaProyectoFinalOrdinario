@@ -103,28 +103,33 @@ public class LogueoPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionActionPerformed
+        // Usuario y contraseña correctos
         String usuarioCorrecto = "admin";
         String contraseñacorrecta = "admin";
 
+        // Comprobar si el usuario ingresado coincide con el usuario correcto
         if (usuarioCorrecto.equals(cajaUsuario.getText())) {
             String contraseña = "";
 
+            // Obtener la contraseña ingresada
             for (int i = 0; i < cajaContraseña.getPassword().length; i++) {
                 contraseña += cajaContraseña.getPassword()[i];
             }
+            // Comprobar si la contraseña ingresada coincide
             if (contraseñacorrecta.equals(contraseña)) {
-                JOptionPane.showMessageDialog(null, "Ingresaste al Sistema");
+                JOptionPane.showMessageDialog(null, 
+                        "Ingresaste al Sistema");
                 ComidaView comida = new ComidaView();
                 comida.setVisible(true);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Error Contraseña Desconocida");
+                JOptionPane.showMessageDialog(null, 
+                        "Error Contraseña Desconocida");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Error, Usuario desconocido");
+            JOptionPane.showMessageDialog(null, 
+                    "Error, Usuario desconocido");
         }
-
-
     }//GEN-LAST:event_inicioSesionActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -132,8 +137,10 @@ public class LogueoPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     public static void main(String args[]) {
+        // Configurar el aspecto visual de la interfaz de usuario con jtattoo
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+            UIManager.setLookAndFeel
+        ("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
 
         } catch (InstantiationException ex) {
