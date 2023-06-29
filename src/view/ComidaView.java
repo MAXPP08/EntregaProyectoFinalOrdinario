@@ -1,8 +1,8 @@
 /**
  * Autor: Maximiliano Pacheco Pérez
  * Fecha de Creación: 01/06/2023
- * Fecha de Actualización: 12/06/2023
- * Descripción: Interfaz principal
+ * Fecha de Actualización: 29/06/2023
+ * Descripción: Interfaz principal de comida
  */
 package view;
 
@@ -93,7 +93,7 @@ public class ComidaView extends javax.swing.JFrame {
         btnEnlaceComida = new javax.swing.JButton();
         btnEnlaceBebida = new javax.swing.JButton();
         btnEnlacePostre = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -243,9 +243,9 @@ public class ComidaView extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu1);
+        Menu.add(jMenu1);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(Menu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -465,11 +465,13 @@ public class ComidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbComidasExoticasActionPerformed
 
     private void btnEnlaceBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlaceBebidaActionPerformed
+        // Enlace a Bebida
         new BebidaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnEnlaceBebidaActionPerformed
 
     private void btnEnlacePostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlacePostreActionPerformed
+        // Enlace a Postre
         new PostreView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnEnlacePostreActionPerformed
@@ -505,6 +507,7 @@ public class ComidaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar Menu;
     private javax.swing.JButton btnAgregarComidaPescado;
     private javax.swing.JButton btnAgregarComidasExoticas;
     private javax.swing.JButton btnAgregarComidasFuertes;
@@ -519,7 +522,6 @@ public class ComidaView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbComidasFuertes;
     private javax.swing.JComboBox<String> cmbComidasPescado;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel labelComidaFuerte;

@@ -1,8 +1,8 @@
 /**
  * Autor: Maximiliano Pacheco Pérez
  * Fecha de Creación: 01/06/2023
- * Fecha de Actualización: 12/06/2023
- * Descripción: Interfaz principal
+ * Fecha de Actualización: 29/06/2023
+ * Descripción: Interfaz principal de Bebida
  */
 package view;
 
@@ -25,7 +25,6 @@ public class BebidaView extends javax.swing.JFrame {
     private Restaurante restaurante;
     private ReciboController controllerRecibo;
     private Recibo recibo;
-
     private ElementoMenuController controllerElementoMenu;
     private ElementoMenu elemento;
     
@@ -33,14 +32,18 @@ public class BebidaView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-
+        /* Crear una instancia del controlador de restaurante y crear un nuevo 
+            registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
-
+        /* Crear una instancia del controlador de recibo y crear un nuevo 
+        registro de recibo*/
         this.controllerRecibo = new ReciboController();
         this.recibo = controllerRecibo.crearRegistro();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
     }
     
@@ -49,13 +52,16 @@ public class BebidaView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.recibo = recibo;
+        /* Crear una instancia del controlador de restaurante y crear un 
+            nuevo registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
-        
+        // Crear una instancia del controlador de elemento del menú
         this.controllerRecibo = new ReciboController();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
-        
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
     }
 
@@ -86,8 +92,8 @@ public class BebidaView extends javax.swing.JFrame {
         btnComida = new javax.swing.JButton();
         btnBebida = new javax.swing.JButton();
         btnPostre = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        Menu = new javax.swing.JMenuBar();
+        subMenu = new javax.swing.JMenu();
         ItemInicio = new javax.swing.JMenuItem();
         itemMenu = new javax.swing.JMenuItem();
 
@@ -216,7 +222,7 @@ public class BebidaView extends javax.swing.JFrame {
         });
         getContentPane().add(btnPostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
-        jMenu1.setText("Usos");
+        subMenu.setText("Usos");
 
         ItemInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
         ItemInicio.setText("Inicio");
@@ -225,7 +231,7 @@ public class BebidaView extends javax.swing.JFrame {
                 ItemInicioActionPerformed(evt);
             }
         });
-        jMenu1.add(ItemInicio);
+        subMenu.add(ItemInicio);
 
         itemMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
         itemMenu.setText("Menú");
@@ -234,16 +240,17 @@ public class BebidaView extends javax.swing.JFrame {
                 itemMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(itemMenu);
+        subMenu.add(itemMenu);
 
-        jMenuBar1.add(jMenu1);
+        Menu.add(subMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(Menu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuActionPerformed
+        // Enlace a vantana Comida
         ComidaView comida = new ComidaView(recibo);
         comida.setVisible(true);
         dispose();
@@ -268,30 +275,41 @@ public class BebidaView extends javax.swing.JFrame {
                 double precio = bebidaSeleccionada.getPrecio();
                 lblBebidaNatural.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(bebidaSeleccionada.getRutaImagen()); 
+                ImageIcon icon = new ImageIcon
+                (bebidaSeleccionada.getRutaImagen()); 
                 labelBebidasNatural.setIcon(icon);
             }
         }
     }//GEN-LAST:event_cmbBebidaNuturalItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarBebidaNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBebidaNaturalActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
         (cantidadBebidaNatural.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbBebidaNutural.getSelectedItem().toString();
-
+            // Obtener el precio del elemento desde la etiqueta correspondiente
             precioElemento = Double.valueOf(lblBebidaNatural.getText());
-
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-            
+            // Agregar el elemento al recibo
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -303,28 +321,30 @@ public class BebidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarBebidaNaturalActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // Enlace a Pagar
         new CuentaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void btnAgregarBebidaCarbonatadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBebidaCarbonatadaActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
         (cantidadBebidaCarbonatada.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbBebidaCarbonatada.getSelectedItem().toString();
-
-            precioElemento = Double.valueOf(lblPrecioCantidadBebidaCarbonatada.getText());
-
+            // Obtener el precio del elemento desde la etiqueta correspondiente
+            precioElemento = Double.valueOf
+            (lblPrecioCantidadBebidaCarbonatada.getText());
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            // Agregar el elemento al recibo        
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -338,7 +358,8 @@ public class BebidaView extends javax.swing.JFrame {
     private void cmbBebidaCarbonatadaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbBebidaCarbonatadaItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombreBebida = (String) cmbBebidaCarbonatada.getSelectedItem();
+            String nombreBebida = (String) 
+                    cmbBebidaCarbonatada.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Bebida bebidaSeleccionada = null;
@@ -352,9 +373,11 @@ public class BebidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (bebidaSeleccionada != null) {
                 double precio = bebidaSeleccionada.getPrecio();
-                lblPrecioCantidadBebidaCarbonatada.setText(String.valueOf(precio));
+                lblPrecioCantidadBebidaCarbonatada.setText
+                (String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(bebidaSeleccionada.getRutaImagen()); 
+                ImageIcon icon = new ImageIcon
+                (bebidaSeleccionada.getRutaImagen()); 
                 labelBebidaCarbonatada.setIcon(icon);
             }
         }
@@ -363,7 +386,8 @@ public class BebidaView extends javax.swing.JFrame {
     private void cmbBebidaAlcoholicaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbBebidaAlcoholicaItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombreBebida = (String) cmbBebidaAlcoholica.getSelectedItem();
+            String nombreBebida = (String) 
+                    cmbBebidaAlcoholica.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Bebida bebidaSeleccionada = null;
@@ -377,32 +401,35 @@ public class BebidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (bebidaSeleccionada != null) {
                 double precio = bebidaSeleccionada.getPrecio();
-                lblPrecioBebidaAlcoholica.setText(String.valueOf(precio));
+                lblPrecioBebidaAlcoholica.setText
+                (String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(bebidaSeleccionada.getRutaImagen()); 
+                ImageIcon icon = new ImageIcon
+                (bebidaSeleccionada.getRutaImagen()); 
                 labelBebidaAlcoholica.setIcon(icon);
             }
         }
     }//GEN-LAST:event_cmbBebidaAlcoholicaItemStateChanged
 
     private void btnAgregarBebidaAlcoholicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBebidaAlcoholicaActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
         (cantidadBebidaAlcoholica.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbBebidaAlcoholica.getSelectedItem().toString();
-
-            precioElemento = Double.valueOf(lblPrecioBebidaAlcoholica.getText());
-
+            // Obtener el precio del elemento desde la etiqueta correspondiente
+            precioElemento = Double.valueOf
+            (lblPrecioBebidaAlcoholica.getText());
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            // Agregar el elemento al recibo
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -422,16 +449,19 @@ public class BebidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbBebidaCarbonatadaActionPerformed
 
     private void btnComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComidaActionPerformed
+        // Enlace a Comida
         new ComidaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnComidaActionPerformed
 
     private void btnPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostreActionPerformed
+        // Enlace a Postre
         new PostreView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnPostreActionPerformed
 
     private void ItemInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemInicioActionPerformed
+        // Enlace a Logueo
         LogueoPrincipal logueo = new LogueoPrincipal();
         logueo.setVisible(true);
         dispose();
@@ -462,6 +492,7 @@ public class BebidaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ItemInicio;
+    private javax.swing.JMenuBar Menu;
     private javax.swing.JButton btnAgregarBebidaAlcoholica;
     private javax.swing.JButton btnAgregarBebidaCarbonatada;
     private javax.swing.JButton btnAgregarBebidaNatural;
@@ -476,8 +507,6 @@ public class BebidaView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbBebidaCarbonatada;
     private javax.swing.JComboBox<String> cmbBebidaNutural;
     private javax.swing.JMenuItem itemMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel labelBebidaAlcoholica;
     private javax.swing.JLabel labelBebidaCarbonatada;
     private javax.swing.JLabel labelBebidasNatural;
@@ -488,6 +517,7 @@ public class BebidaView extends javax.swing.JFrame {
     private javax.swing.JLabel precioBebidaAlcoholica;
     private javax.swing.JLabel precioBebidaCarbonatada;
     private javax.swing.JLabel precioBebidaNatural;
+    private javax.swing.JMenu subMenu;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -501,12 +531,14 @@ public class BebidaView extends javax.swing.JFrame {
         }
         for (Bebida bebida1 : restaurante.getBebidasCarbonatadas()) {
             cmbBebidaCarbonatada.addItem(bebida1.getNombre());
-            lblPrecioCantidadBebidaCarbonatada.setText(String.valueOf(bebida1.getPrecio()));
+            lblPrecioCantidadBebidaCarbonatada.setText
+            (String.valueOf(bebida1.getPrecio()));
         }
 
         for (Bebida bebida2 : restaurante.getBebidasAlcoholicas()) {
             cmbBebidaAlcoholica.addItem(bebida2.getNombre());
-            lblPrecioBebidaAlcoholica.setText(String.valueOf(bebida2.getPrecio()));
+            lblPrecioBebidaAlcoholica.setText
+            (String.valueOf(bebida2.getPrecio()));
         }
     }
 }
