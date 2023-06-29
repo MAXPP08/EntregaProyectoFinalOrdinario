@@ -19,12 +19,17 @@ public class CuentaView extends javax.swing.JFrame {
     private ReciboController controllerRecibo = new ReciboController();
     private Recibo recibo;
 
+    /**
+     * Este constructor configura la ventana de la vista de la cuenta y muestra
+     * el recibo proporcionado en la tabla de la interfaz gráfica.
+     * @param recibo 
+     */
     public CuentaView(Recibo recibo) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.recibo = recibo;
-
+        //Utilizar el controlador del recibo para imprimir el recibo en la tabla
         controllerRecibo.imprimirRecibo(recibo,
                 (DefaultTableModel) tblRecibo.getModel());
     }
@@ -54,9 +59,9 @@ public class CuentaView extends javax.swing.JFrame {
         lblCambio = new javax.swing.JLabel();
         campoCambio = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miMenu = new javax.swing.JMenu();
+        menuInicio = new javax.swing.JMenuItem();
+        menuMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,32 +143,32 @@ public class CuentaView extends javax.swing.JFrame {
 
         campoCambio.setEditable(false);
 
-        jMenu1.setText("Usos");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        miMenu.setText("Usos");
+        miMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                miMenuActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
-        jMenuItem1.setText("Inicio");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
+        menuInicio.setText("Inicio");
+        menuInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuInicioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        miMenu.add(menuInicio);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
-        jMenuItem2.setText("Menú");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
+        menuMenu.setText("Menú");
+        menuMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        miMenu.add(menuMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(miMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -235,6 +240,11 @@ public class CuentaView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Este método genera la cuenta del recibo y muestra el total a pagar en 
+     * el campo de texto.
+     * @param evt 
+     */
     private void btnGenerarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCuentaActionPerformed
         controllerRecibo.generarCuenta(recibo);
         double pagarCuenta;
@@ -296,23 +306,23 @@ public class CuentaView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void miMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMenuActionPerformed
         ComidaView comida = new ComidaView(recibo);
         comida.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_miMenuActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
         LogueoPrincipal logueo = new LogueoPrincipal();
         logueo.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuInicioActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMenuActionPerformed
         ComidaView comida = new ComidaView(recibo);
         comida.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuMenuActionPerformed
 
     /**
      * Este método se encarga de realizar las operaciones de pago, validar los
@@ -323,7 +333,6 @@ public class CuentaView extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         //Se llevan a cabo las operaciones de pago por parte del usuario y 
         //válida los campos
-        
         if (CampoTotalAPagar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, 
                     "No existen pedidos agregados");
@@ -390,14 +399,14 @@ public class CuentaView extends javax.swing.JFrame {
     private javax.swing.JTextField campoCambio;
     private javax.swing.JTextField campoCantidadProporcionada;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCambio;
     private javax.swing.JLabel lblCantidadProporcionada;
     private javax.swing.JLabel lblTotalAPagar;
+    private javax.swing.JMenuItem menuInicio;
+    private javax.swing.JMenuItem menuMenu;
+    private javax.swing.JMenu miMenu;
     private javax.swing.JTable tblRecibo;
     // End of variables declaration//GEN-END:variables
 }
