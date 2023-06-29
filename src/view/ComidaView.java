@@ -16,7 +16,6 @@ import entity.Comida;
 import entity.ElementoMenu;
 import entity.Restaurante;
 import java.awt.event.ItemEvent;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -29,7 +28,7 @@ public class ComidaView extends javax.swing.JFrame {
 
     private ElementoMenuController controllerElementoMenu;
     private ElementoMenu elemento;
-    
+
     public ComidaView() {
         initComponents();
         setLocationRelativeTo(null);
@@ -44,19 +43,19 @@ public class ComidaView extends javax.swing.JFrame {
 
         this.controllerElementoMenu = new ElementoMenuController();
     }
-    
-    public ComidaView(Recibo recibo){
+
+    public ComidaView(Recibo recibo) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.recibo = recibo;
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
-        
+
         this.controllerRecibo = new ReciboController();
 
         this.controllerElementoMenu = new ElementoMenuController();
-        
+
         cargarDatos();
     }
 
@@ -251,8 +250,9 @@ public class ComidaView extends javax.swing.JFrame {
     private void cmbComidasPescadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasPescadoItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidasPescado.getSelectedItem();
-            
+            String nombrePlatillo = (String) 
+                    cmbComidasPescado.getSelectedItem();
+
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
             for (Comida comida : restaurante.getComidasPescado()) {
@@ -267,7 +267,8 @@ public class ComidaView extends javax.swing.JFrame {
                 double precio = platilloSeleccionado.getPrecio();
                 lblPrecioCantidadPescado.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                ImageIcon icon = new 
+                ImageIcon(platilloSeleccionado.getRutaImagen());
                 labelPescado.setIcon(icon);
             }
         }
@@ -279,18 +280,16 @@ public class ComidaView extends javax.swing.JFrame {
         (cantidadComidasPescado.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
             nombreElemento = cmbComidasPescado.getSelectedItem().toString();
-
-            precioElemento = Double.valueOf(lblPrecioCantidadPescado.getText());
+            precioElemento = Double.valueOf
+            (lblPrecioCantidadPescado.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-            
+
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -312,12 +311,10 @@ public class ComidaView extends javax.swing.JFrame {
         (cantidadComidasExoticas.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
             nombreElemento = cmbComidasExoticas.getSelectedItem().toString();
-
-            precioElemento = Double.valueOf(lblPrecioCantidadComidasExoticas.getText());
+            precioElemento = Double.valueOf
+            (lblPrecioCantidadComidasExoticas.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
@@ -337,7 +334,8 @@ public class ComidaView extends javax.swing.JFrame {
     private void cmbComidasExoticasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasExoticasItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidasExoticas.getSelectedItem();
+            String nombrePlatillo = (String) 
+                    cmbComidasExoticas.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
@@ -351,9 +349,11 @@ public class ComidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (platilloSeleccionado != null) {
                 double precio = platilloSeleccionado.getPrecio();
-                lblPrecioCantidadComidasExoticas.setText(String.valueOf(precio));
+                lblPrecioCantidadComidasExoticas.setText
+                (String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                ImageIcon icon = new ImageIcon
+                (platilloSeleccionado.getRutaImagen());
                 labelComidasExoticas.setIcon(icon);
             }
         }
@@ -362,7 +362,8 @@ public class ComidaView extends javax.swing.JFrame {
     private void cmbComidasFuertesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasFuertesItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidasFuertes.getSelectedItem();
+            String nombrePlatillo = (String) 
+                        cmbComidasFuertes.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
@@ -378,7 +379,8 @@ public class ComidaView extends javax.swing.JFrame {
                 double precio = platilloSeleccionado.getPrecio();
                 lblPrecioCantidadFuertes.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                ImageIcon icon = new ImageIcon
+                (platilloSeleccionado.getRutaImagen());
                 labelComidaFuerte.setIcon(icon);
             }
         }
@@ -395,7 +397,8 @@ public class ComidaView extends javax.swing.JFrame {
 
             nombreElemento = cmbComidasFuertes.getSelectedItem().toString();
 
-            precioElemento = Double.valueOf(lblPrecioCantidadFuertes.getText());
+            precioElemento = Double.valueOf
+            (lblPrecioCantidadFuertes.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
@@ -413,7 +416,7 @@ public class ComidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarComidasFuertesActionPerformed
 
     private void cmbComidasPescadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbComidasPescadoActionPerformed
-        
+
     }//GEN-LAST:event_cmbComidasPescadoActionPerformed
 
     private void cmbComidasExoticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbComidasExoticasActionPerformed
@@ -442,7 +445,7 @@ public class ComidaView extends javax.swing.JFrame {
          */
         try {
             UIManager.setLookAndFeel
-            ("com.jtattoo.plaf.texture.TextureLookAndFeel");
+        ("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
 
         } catch (InstantiationException ex) {
@@ -493,16 +496,19 @@ public class ComidaView extends javax.swing.JFrame {
 
         for (Comida comida : restaurante.getComidasPescado()) {
             cmbComidasPescado.addItem(comida.getNombre());
-            lblPrecioCantidadPescado.setText(String.valueOf(comida.getPrecio()));
+            lblPrecioCantidadPescado.setText
+            (String.valueOf(comida.getPrecio()));
         }
         for (Comida comida1 : restaurante.getComidasExoticas()) {
             cmbComidasExoticas.addItem(comida1.getNombre());
-            lblPrecioCantidadComidasExoticas.setText(String.valueOf(comida1.getPrecio()));
+            lblPrecioCantidadComidasExoticas.setText
+            (String.valueOf(comida1.getPrecio()));
         }
 
         for (Comida comida2 : restaurante.getComidasFuertes()) {
             cmbComidasFuertes.addItem(comida2.getNombre());
-            lblPrecioCantidadFuertes.setText(String.valueOf(comida2.getPrecio()));
+            lblPrecioCantidadFuertes.setText
+            (String.valueOf(comida2.getPrecio()));
         }
     }
 }
