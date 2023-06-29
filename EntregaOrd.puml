@@ -1,0 +1,85 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class controller.ElementoMenuController
+class controller.ReciboController
+class controller.RestauranteController
+class entity.Bebida
+class entity.Comida
+class entity.ElementoMenu
+class entity.Postre
+class entity.Recibo
+class entity.Restaurante
+class java.awt.event.ItemEvent
+class java.text.DecimalFormat
+class javax.swing.Icon
+class javax.swing.ImageIcon
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.UIManager
+class javax.swing.UnsupportedLookAndFeelException
+class javax.swing.table.DefaultTableModel
+class view.BebidaView
+class view.ComidaView
+class view.CuentaView
+class view.LogueoPrincipal
+class view.PostreView
+view.BebidaView ..> java.lang.SuppressWarnings
+view.BebidaView ..> controller.ElementoMenuController
+view.BebidaView ..> controller.ReciboController
+view.BebidaView ..> controller.RestauranteController
+view.BebidaView ..> entity.Bebida
+view.BebidaView ..> entity.ElementoMenu
+view.BebidaView ..> entity.Recibo
+view.BebidaView ..> entity.Restaurante
+view.BebidaView ..> java.awt.event.ItemEvent
+view.BebidaView ..> javax.swing.ImageIcon
+view.BebidaView --|> javax.swing.JFrame
+view.BebidaView ..> javax.swing.JOptionPane
+view.BebidaView ..> javax.swing.UIManager
+view.BebidaView ..> javax.swing.UnsupportedLookAndFeelException
+view.ComidaView ..> java.lang.SuppressWarnings
+view.ComidaView ..> controller.ElementoMenuController
+view.ComidaView ..> controller.ReciboController
+view.ComidaView ..> controller.RestauranteController
+view.ComidaView ..> entity.Comida
+view.ComidaView ..> entity.ElementoMenu
+view.ComidaView ..> entity.Recibo
+view.ComidaView ..> entity.Restaurante
+view.ComidaView ..> java.awt.event.ItemEvent
+view.ComidaView ..> javax.swing.Icon
+view.ComidaView ..> javax.swing.ImageIcon
+view.ComidaView --|> javax.swing.JFrame
+view.ComidaView ..> javax.swing.JOptionPane
+view.ComidaView ..> javax.swing.UIManager
+view.ComidaView ..> javax.swing.UnsupportedLookAndFeelException
+view.CuentaView ..> java.lang.SuppressWarnings
+view.CuentaView ..> controller.ElementoMenuController
+view.CuentaView ..> controller.ReciboController
+view.CuentaView ..> entity.ElementoMenu
+view.CuentaView ..> entity.Recibo
+view.CuentaView ..> java.text.DecimalFormat
+view.CuentaView --|> javax.swing.JFrame
+view.CuentaView ..> javax.swing.JOptionPane
+view.CuentaView ..> javax.swing.UIManager
+view.CuentaView ..> javax.swing.UnsupportedLookAndFeelException
+view.CuentaView ..> javax.swing.table.DefaultTableModel
+view.LogueoPrincipal ..> java.lang.SuppressWarnings
+view.LogueoPrincipal --|> javax.swing.JFrame
+view.LogueoPrincipal ..> javax.swing.JOptionPane
+view.LogueoPrincipal ..> javax.swing.UIManager
+view.LogueoPrincipal ..> javax.swing.UnsupportedLookAndFeelException
+view.PostreView ..> java.lang.SuppressWarnings
+view.PostreView ..> controller.ElementoMenuController
+view.PostreView ..> controller.ReciboController
+view.PostreView ..> controller.RestauranteController
+view.PostreView ..> entity.ElementoMenu
+view.PostreView ..> entity.Postre
+view.PostreView ..> entity.Recibo
+view.PostreView ..> entity.Restaurante
+view.PostreView ..> java.awt.event.ItemEvent
+view.PostreView ..> javax.swing.ImageIcon
+view.PostreView --|> javax.swing.JFrame
+view.PostreView ..> javax.swing.JOptionPane
+view.PostreView ..> javax.swing.UIManager
+view.PostreView ..> javax.swing.UnsupportedLookAndFeelException
+@enduml

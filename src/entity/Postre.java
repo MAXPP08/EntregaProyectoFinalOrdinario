@@ -10,8 +10,9 @@ public class Postre extends Menu {
 
     private boolean esSinAzucar;
 
-    public Postre(String nombre, double precio, boolean esSinAzucar) {
-        super(nombre, precio);
+    public Postre(String nombre, double precio, boolean esSinAzucar, 
+            String rutaImagen) {
+        super(nombre, precio, rutaImagen);
         this.esSinAzucar = esSinAzucar;
     }
 

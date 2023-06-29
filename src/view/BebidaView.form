@@ -9,7 +9,7 @@
             <Property name="text" type="java.lang.String" value="Usos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="ItemInicio">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/iconImages/hogar.png"/>
@@ -17,10 +17,10 @@
                 <Property name="text" type="java.lang.String" value="Inicio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemInicioActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="itemMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/iconImages/menu.png"/>
@@ -28,7 +28,7 @@
                 <Property name="text" type="java.lang.String" value="Men&#xfa;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMenuActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -73,10 +73,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelPescado">
+    <Component class="javax.swing.JLabel" name="labelBebidasNatural">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/foodImages/Pescado-Frito.jpg"/>
+          <Image iconType="3" name="/foodImages/AguaCoco.jpg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -85,10 +85,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelComidasExoticas">
+    <Component class="javax.swing.JLabel" name="labelBebidaCarbonatada">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/foodImages/Ostiones-Gratinados.jpg"/>
+          <Image iconType="3" name="/foodImages/coca-cola.jpeg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -97,10 +97,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelComidaFuerte">
+    <Component class="javax.swing.JLabel" name="labelBebidaAlcoholica">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/foodImages/CamaronesEmpanizados.png"/>
+          <Image iconType="3" name="/foodImages/Cerveza-Corona.jpg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -109,15 +109,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbComidasPescado">
+    <Component class="javax.swing.JComboBox" name="cmbBebidaNutural">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbComidasPescadoItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbComidasPescadoActionPerformed"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbBebidaNuturalItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbBebidaNuturalActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -128,15 +128,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbComidasExoticas">
+    <Component class="javax.swing.JComboBox" name="cmbBebidaCarbonatada">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbComidasExoticasItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbComidasExoticasActionPerformed"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbBebidaCarbonatadaItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbBebidaCarbonatadaActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -147,14 +147,14 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbComidasFuertes">
+    <Component class="javax.swing.JComboBox" name="cmbBebidaAlcoholica">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbComidasFuertesItemStateChanged"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbBebidaAlcoholicaItemStateChanged"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -165,7 +165,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JSpinner" name="cantidadComidasPescado">
+    <Component class="javax.swing.JSpinner" name="cantidadBebidaNatural">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -177,7 +177,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JSpinner" name="cantidadComidasExoticas">
+    <Component class="javax.swing.JSpinner" name="cantidadBebidaCarbonatada">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -190,7 +190,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JSpinner" name="cantidadComidasFuertes">
+    <Component class="javax.swing.JSpinner" name="cantidadBebidaAlcoholica">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -202,12 +202,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAgregarComidaPescado">
+    <Component class="javax.swing.JButton" name="btnAgregarBebidaNatural">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Orden"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarComidaPescadoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarBebidaNaturalActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -215,7 +215,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="precioComidasFuertes">
+    <Component class="javax.swing.JLabel" name="precioBebidaAlcoholica">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
@@ -225,7 +225,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="precioComidasPescado">
+    <Component class="javax.swing.JLabel" name="precioBebidaNatural">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
@@ -235,7 +235,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="precioComidasExoticas">
+    <Component class="javax.swing.JLabel" name="precioBebidaCarbonatada">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
@@ -245,12 +245,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAgregarComidasFuertes">
+    <Component class="javax.swing.JButton" name="btnAgregarBebidaAlcoholica">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Orden"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarComidasFuertesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarBebidaAlcoholicaActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -258,12 +258,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAgregarComidasExoticas">
+    <Component class="javax.swing.JButton" name="btnAgregarBebidaCarbonatada">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Orden"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarComidasExoticasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarBebidaCarbonatadaActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -284,7 +284,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrecioCantidadPescado">
+    <Component class="javax.swing.JLabel" name="lblBebidaNatural">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
@@ -294,7 +294,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrecioCantidadComidasExoticas">
+    <Component class="javax.swing.JLabel" name="lblPrecioCantidadBebidaCarbonatada">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
@@ -304,7 +304,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrecioCantidadFuertes">
+    <Component class="javax.swing.JLabel" name="lblPrecioBebidaAlcoholica">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
@@ -314,45 +314,45 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnComida">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/iconImages/comida.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComidaActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="130" width="-1" height="-1"/>
+          <AbsoluteConstraints x="90" y="140" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnBebida">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/iconImages/bebida.png"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="340" y="130" width="-1" height="-1"/>
+          <AbsoluteConstraints x="330" y="140" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnPostre">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/iconImages/postre.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPostreActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="130" width="-1" height="-1"/>
+          <AbsoluteConstraints x="550" y="140" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -9,10 +9,20 @@ package entity;
 public abstract class Menu {
     private String nombre;
     private double precio;
+    private String rutaImagen;
 
-    public Menu(String nombre, double precio) {
+    public Menu(String nombre, double precio, String rutaImagen) {
         this.nombre = nombre;
         this.precio = precio;
+        this.rutaImagen = rutaImagen;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
     public String getNombre() {
@@ -31,5 +41,10 @@ public abstract class Menu {
         this.precio = precio;
     }
 
+    /**
+     * Método Abstracto para Calcular el Precio Total
+     * @param cantidad
+     * @return 
+     */
     public abstract double calcularPrecioTotal(int cantidad);
 }

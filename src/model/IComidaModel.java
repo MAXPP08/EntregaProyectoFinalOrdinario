@@ -11,16 +11,36 @@ import java.util.List;
 
 public interface IComidaModel {
 
-    // El Método que crea un tipo de comida
+    /**
+     *  Este método recibe una lista de comidas y un objeto de tipo Comida y se
+     * encarga de agregar la comida a la lista.
+     * @param lista
+     * @param comida 
+     */
     public void crearRegistro(List<Comida> lista, Comida comida);
 
-    // El Método que elimina un tipo de comida
+    /**
+     *  Este método recibe una lista de comidas y un nombre de comida, y se 
+     * encarga de buscar y eliminar la comida correspondiente de la lista.
+     * @param lista
+     * @param nombre 
+     */
     public void eliminarRegistro(List<Comida> lista, String nombre);
 
-    // El Método que actualiza un tipo de comida
+    /**
+     * Este método recibe una lista de comidas y un objeto de tipo Comida y se 
+     * encarga de buscar y actualizar la comida correspondiente en la lista.
+     * @param lista
+     * @param comida 
+     */
     public void actualizarRegistro(List<Comida> lista, Comida comida);
 
-    // El Método que muestra un tipo de comida
+    /**
+     * Este método recibe una lista de comidas y un identificador de comida (id)
+     * y devuelve el objeto Comida correspondiente en la lista.
+     * @param lista
+     * @param id
+     * @return 
+     */
     public Comida obtenerRegistro(List<Comida> lista, int id);
-
 }

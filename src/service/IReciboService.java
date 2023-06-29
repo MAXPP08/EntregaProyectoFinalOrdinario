@@ -20,4 +20,9 @@ public interface IReciboService {
 
     // crea el registro
     public Recibo crearRegistro();
+    
+    // elimina un registro
+    public void eliminarRegistro(int id, Recibo recibo);
+    
+    public double generarCuenta(Recibo recibo);
 }

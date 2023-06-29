@@ -6,14 +6,18 @@
  */
 package view;
 
+import controller.ElementoMenuController;
 import controller.ReciboController;
+import entity.ElementoMenu;
 import entity.Recibo;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 public class CuentaView extends javax.swing.JFrame {
-    
+
     private ReciboController controllerRecibo = new ReciboController();
     private Recibo recibo;
 
@@ -23,7 +27,7 @@ public class CuentaView extends javax.swing.JFrame {
         this.setResizable(false);
         this.recibo = recibo;
 
-        controllerRecibo.imprimirRecibo(recibo, 
+        controllerRecibo.imprimirRecibo(recibo,
                 (DefaultTableModel) tblRecibo.getModel());
     }
 
@@ -40,17 +44,17 @@ public class CuentaView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRecibo = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        btnEliminarRegistro = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnGenerarCuenta = new javax.swing.JButton();
+        lblTotalAPagar = new javax.swing.JLabel();
+        CampoTotalAPagar = new javax.swing.JTextField();
+        lblCantidadProporcionada = new javax.swing.JLabel();
+        campoCantidadProporcionada = new javax.swing.JTextField();
+        btnPagar = new javax.swing.JButton();
+        lblCambio = new javax.swing.JLabel();
+        campoCambio = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -70,51 +74,95 @@ public class CuentaView extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "Precio", "Cantidad"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblRecibo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblReciboMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblRecibo);
+        if (tblRecibo.getColumnModel().getColumnCount() > 0) {
+            tblRecibo.getColumnModel().getColumn(0).setResizable(false);
+            tblRecibo.getColumnModel().getColumn(1).setResizable(false);
+            tblRecibo.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarRegistro.setText("Eliminar");
+        btnEliminarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEliminarRegistroActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Editar");
-
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Generar Cuenta");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Total a pagar:");
+        btnGenerarCuenta.setText("Generar Cuenta");
+        btnGenerarCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarCuentaActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Cantidad Proporcionada:");
+        lblTotalAPagar.setText("Total a pagar:");
 
-        jButton5.setText("Pagar");
+        CampoTotalAPagar.setEditable(false);
 
-        jLabel4.setText("Cambio:");
+        lblCantidadProporcionada.setText("Cantidad Proporcionada:");
+
+        btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
+
+        lblCambio.setText("Cambio:");
+
+        campoCambio.setEditable(false);
 
         jMenu1.setText("Usos");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
+        jMenuItem1.setText("Inicio");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
+        jMenuItem2.setText("Menú");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -132,31 +180,31 @@ public class CuentaView extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addComponent(jButton4))
+                        .addComponent(btnGenerarCuenta))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton1)
+                        .addComponent(btnEliminarRegistro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(btnEditar)
+                            .addComponent(btnCancelar)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2)
+                        .addComponent(lblTotalAPagar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CampoTotalAPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel3)
+                        .addComponent(lblCantidadProporcionada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoCantidadProporcionada, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton5)
+                        .addComponent(btnPagar)
                         .addGap(35, 35, 35)
-                        .addComponent(jLabel4)
+                        .addComponent(lblCambio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -165,59 +213,136 @@ public class CuentaView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnEliminarRegistro)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
+                            .addComponent(btnEditar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
+                            .addComponent(btnCancelar))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(btnGenerarCuenta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTotalAPagar)
+                    .addComponent(CampoTotalAPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCantidadProporcionada)
+                    .addComponent(campoCantidadProporcionada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagar)
+                    .addComponent(lblCambio)
+                    .addComponent(campoCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnGenerarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCuentaActionPerformed
+        controllerRecibo.generarCuenta(recibo);
+        double pagarCuenta;
+        pagarCuenta = controllerRecibo.generarCuenta(recibo);
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CampoTotalAPagar.setText(Double.valueOf(pagarCuenta).toString());
+    }//GEN-LAST:event_btnGenerarCuentaActionPerformed
+
+    private void btnEliminarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarRegistroActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblRecibo.getModel();
+        int filaSeleccionada = tblRecibo.getSelectedRow();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(null,
+                "¿Estás seguro de eliminar?", "Confirmación",
+                JOptionPane.OK_CANCEL_OPTION);
+
+        if (opcion == JOptionPane.OK_OPTION) {
+            controllerRecibo.eliminarRecibo(filaSeleccionada, recibo);
+            controllerRecibo.imprimirRecibo(recibo, modelo);
+        }
+
+        controllerRecibo.generarCuenta(recibo);
+        double pagarCuenta;
+        pagarCuenta = controllerRecibo.generarCuenta(recibo);
+
+        CampoTotalAPagar.setText(new DecimalFormat("0.00").format(pagarCuenta));
+    }//GEN-LAST:event_btnEliminarRegistroActionPerformed
 
     private void tblReciboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReciboMouseClicked
         int filaSeleccionada = tblRecibo.getSelectedRow();
     }//GEN-LAST:event_tblReciboMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(null,
+                "Usted sera enviado al Logueo", "Confirmación",
+                JOptionPane.OK_CANCEL_OPTION);
+
+        if (opcion == JOptionPane.OK_OPTION) {
+            LogueoPrincipal logueo = new LogueoPrincipal();
+            logueo.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        ComidaView comida = new ComidaView(recibo);
+        comida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        ComidaView comida = new ComidaView(recibo);
+        comida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        LogueoPrincipal logueo = new LogueoPrincipal();
+        logueo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ComidaView comida = new ComidaView(recibo);
+        comida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        //Se llevan a cabo las operaciones de pago por parte del usuario y 
+        //válida los campos
+        
+        if (CampoTotalAPagar.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No existen pedidos agregados");
+        } else {
+            String cantidadProporcionadaText = campoCantidadProporcionada.getText().trim();
+            if (cantidadProporcionadaText.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Ingrese un valor para la cantidad proporcionada");
+            } else if (!cantidadProporcionadaText.matches("\\d*")) {
+                JOptionPane.showMessageDialog(null, "Ingrese solo números en la cantidad proporcionada");
+            } else {
+                double pago = Double.parseDouble(cantidadProporcionadaText);
+                double total = Double.parseDouble(CampoTotalAPagar.getText());
+
+                if (total > pago) {
+                    JOptionPane.showMessageDialog(null, "El pago es menor a la cuenta total, ingrese un valor mayor");
+                } else {
+                    double cambio = pago - total;
+                    campoCambio.setText(new DecimalFormat("0.00").format(cambio));
+                    JOptionPane.showMessageDialog(null, "Gracias por su preferencia");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPagarActionPerformed
 
     public static void main(String args[]) {
         try {
-            UIManager.setLookAndFeel
-            ("com.jtattoo.plaf.texture.TextureLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
-            
+
         } catch (InstantiationException ex) {
-            
+
         } catch (IllegalAccessException ex) {
-            
+
         } catch (UnsupportedLookAndFeelException ex) {
-            
+
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -227,23 +352,23 @@ public class CuentaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JTextField CampoTotalAPagar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminarRegistro;
+    private javax.swing.JButton btnGenerarCuenta;
+    private javax.swing.JButton btnPagar;
+    private javax.swing.JTextField campoCambio;
+    private javax.swing.JTextField campoCantidadProporcionada;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblCambio;
+    private javax.swing.JLabel lblCantidadProporcionada;
+    private javax.swing.JLabel lblTotalAPagar;
     private javax.swing.JTable tblRecibo;
     // End of variables declaration//GEN-END:variables
 }

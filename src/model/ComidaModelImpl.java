@@ -1,7 +1,7 @@
 /**
  * Autor: Maximiliano Pacheco Pérez
  * Fecha de Creación: 01/06/2023
- * Fecha de Actualización: 12/06/2023
+ * Fecha de Actualización: 26/06/2023
  * Descripción: model de la comida
  */
 package model;
@@ -12,7 +12,8 @@ import java.util.List;
 public class ComidaModelImpl implements IComidaModel {
 
     /**
-     * El método crea una comida
+     * El método "crearRegistro" recibe una lista de comidas y una comida 
+     * específica como parámetros, y agrega la comida a la lista.
      *
      * @param lista
      * @param comida
@@ -23,7 +24,10 @@ public class ComidaModelImpl implements IComidaModel {
     }
 
     /**
-     * El método elimina una comida
+     * El método "eliminarRegistro" recibe una lista de comidas y el nombre de 
+     * una comida como parámetro. Itera sobre la lista y busca una coincidencia 
+     * de nombre. Si encuentra una coincidencia, elimina la comida 
+     * correspondiente de la lista.
      *
      * @param lista
      * @param nombre
@@ -40,7 +44,10 @@ public class ComidaModelImpl implements IComidaModel {
     }
 
     /**
-     * El método actualiza una comida
+     * El método "actualizarRegistro" recibe una lista de comidas y una comida
+     * actualizada como parámetros. Itera sobre la lista y busca una 
+     * coincidencia de nombre. Si encuentra una coincidencia, reemplaza la 
+     * comida existente con la comida actualizada.
      *
      * @param lista
      * @param comida
@@ -57,7 +64,8 @@ public class ComidaModelImpl implements IComidaModel {
     }
 
     /**
-     * El método elimina una comida
+     * El método "obtenerRegistro" recibe una lista de comidas y un ID como 
+     * parámetro, y devuelve la comida correspondiente a ese ID.
      *
      * @param lista
      * @param modelo
@@ -66,5 +74,4 @@ public class ComidaModelImpl implements IComidaModel {
     public Comida obtenerRegistro(List<Comida> lista, int id) {
         return lista.get(id);
     }
-
 }

@@ -10,8 +10,9 @@ public class Comida extends Menu {
 
     private int tiempoPreparacion;
 
-    public Comida(String nombre, double precio, int tiempoPreparacion) {
-        super(nombre, precio);
+    public Comida(String nombre, double precio, int tiempoPreparacion, 
+            String rutaImagen) {
+        super(nombre, precio, rutaImagen);
         this.tiempoPreparacion = tiempoPreparacion;
     }
 

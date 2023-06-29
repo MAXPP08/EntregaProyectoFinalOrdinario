@@ -12,9 +12,10 @@ import service.BebidaServiceImpl;
 import service.IBebidaService;
 
 public class BebidaController {
+
     // Unimos el servicio y controller
     IBebidaService service = new BebidaServiceImpl();
-    
+
     //El método crea una bebida
     public void crearRegistro(List<Bebida> lista, Bebida bebida) {
         service.crearRegistro(lista, bebida);
@@ -31,8 +32,7 @@ public class BebidaController {
     }
 
     //El método muestra un entrenador
-    public Bebida obtenerRegistro(List<Bebida>lista, int id) {
+    public Bebida obtenerRegistro(List<Bebida> lista, int id) {
         return service.obtenerRegistro(lista, id);
     }
-
 }

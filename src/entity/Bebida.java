@@ -7,11 +7,13 @@
 package entity;
 
 public class Bebida extends Menu {
+    
     private String tamaño;
     private boolean disponible;
 
-    public Bebida(String nombre, double precio, String tamaño) {
-        super(nombre, precio);
+    public Bebida(String nombre, double precio, String tamaño, 
+            String rutaImagen) {
+        super(nombre, precio,rutaImagen);
         this.tamaño = tamaño;
         this.disponible = true; //Por defecto, la bebida se considera disponible
     }
@@ -32,6 +34,11 @@ public class Bebida extends Menu {
         this.disponible = disponible;
     }
 
+    /**
+     * Implementación del método para Calcular el Precio Total
+     * @param cantidad
+     * @return 
+     */
     @Override
     public double calcularPrecioTotal(int cantidad) {
         return getPrecio() * cantidad;

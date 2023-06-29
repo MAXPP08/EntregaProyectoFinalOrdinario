@@ -6,21 +6,18 @@
  */
 package view;
 
-
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class LogueoPrincipal extends javax.swing.JFrame {
 
-    
     public LogueoPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -108,43 +105,43 @@ public class LogueoPrincipal extends javax.swing.JFrame {
     private void inicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionActionPerformed
         String usuarioCorrecto = "admin";
         String contraseñacorrecta = "admin";
-        
-        if(usuarioCorrecto.equals(cajaUsuario.getText())){
+
+        if (usuarioCorrecto.equals(cajaUsuario.getText())) {
             String contraseña = "";
-            
+
             for (int i = 0; i < cajaContraseña.getPassword().length; i++) {
                 contraseña += cajaContraseña.getPassword()[i];
             }
-            if(contraseñacorrecta.equals(contraseña)){
+            if (contraseñacorrecta.equals(contraseña)) {
                 JOptionPane.showMessageDialog(null, "Ingresaste al Sistema");
+                ComidaView comida = new ComidaView();
+                comida.setVisible(true);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Error Contraseña Desconocida");
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Error, Usuario desconocido");
         }
-        
-        ComidaView comida = new ComidaView();
-        comida.setVisible(true);
-        dispose();
+
+
     }//GEN-LAST:event_inicioSesionActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_cancelarActionPerformed
 
-    
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
-            
+
         } catch (InstantiationException ex) {
-            
+
         } catch (IllegalAccessException ex) {
-            
+
         } catch (UnsupportedLookAndFeelException ex) {
-            
+
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

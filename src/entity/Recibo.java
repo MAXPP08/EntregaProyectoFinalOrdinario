@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Recibo {
 
+    // Declaración de Lista de Elementos
     private List<ElementoMenu> elementos;
 
     public Recibo() {
@@ -21,4 +22,7 @@ public class Recibo {
         return elementos;
     }
 
+    public void setElementos(List<ElementoMenu> elementos) {
+        this.elementos = elementos;
+    }
 }

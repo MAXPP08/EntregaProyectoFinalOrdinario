@@ -10,9 +10,12 @@ import entity.Restaurante;
 
 public class RestauranteModelImpl implements IRestauranteModel {
 
+    /**
+     * crearRegistro, se crea y devuelve un nuevo objeto de tipo "Restaurante".
+     * @return 
+     */
     @Override
     public Restaurante crearRegistro() {
         return new Restaurante();
     }
-
 }

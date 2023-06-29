@@ -16,6 +16,8 @@ import entity.Comida;
 import entity.ElementoMenu;
 import entity.Restaurante;
 import java.awt.event.ItemEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class ComidaView extends javax.swing.JFrame {
@@ -27,7 +29,7 @@ public class ComidaView extends javax.swing.JFrame {
 
     private ElementoMenuController controllerElementoMenu;
     private ElementoMenu elemento;
-
+    
     public ComidaView() {
         initComponents();
         setLocationRelativeTo(null);
@@ -42,34 +44,49 @@ public class ComidaView extends javax.swing.JFrame {
 
         this.controllerElementoMenu = new ElementoMenuController();
     }
+    
+    public ComidaView(Recibo recibo){
+        initComponents();
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.recibo = recibo;
+        this.controllerRestaurante = new RestauranteController();
+        this.restaurante = controllerRestaurante.crearRegistro();
+        
+        this.controllerRecibo = new ReciboController();
+
+        this.controllerElementoMenu = new ElementoMenuController();
+        
+        cargarDatos();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         labelLogo = new javax.swing.JLabel();
-        labelMariscos = new javax.swing.JLabel();
-        labelBebidas = new javax.swing.JLabel();
-        labelPostre = new javax.swing.JLabel();
-        cmbComidasMariscos = new javax.swing.JComboBox<>();
-        cmbComidas = new javax.swing.JComboBox<>();
-        cmbComidasTacos = new javax.swing.JComboBox<>();
-        cantidadComidasMariscos = new javax.swing.JSpinner();
-        cantidadComidas = new javax.swing.JSpinner();
-        cantidadComidasTacos = new javax.swing.JSpinner();
-        btnAgregarComidaMariscos = new javax.swing.JButton();
-        precioComidasTacos = new javax.swing.JLabel();
-        precioComidasMariscos = new javax.swing.JLabel();
-        precioComidas = new javax.swing.JLabel();
-        btnAgregarComidaTacos = new javax.swing.JButton();
-        btnAgregarComida = new javax.swing.JButton();
+        labelPescado = new javax.swing.JLabel();
+        labelComidasExoticas = new javax.swing.JLabel();
+        labelComidaFuerte = new javax.swing.JLabel();
+        cmbComidasPescado = new javax.swing.JComboBox<>();
+        cmbComidasExoticas = new javax.swing.JComboBox<>();
+        cmbComidasFuertes = new javax.swing.JComboBox<>();
+        cantidadComidasPescado = new javax.swing.JSpinner();
+        cantidadComidasExoticas = new javax.swing.JSpinner();
+        cantidadComidasFuertes = new javax.swing.JSpinner();
+        btnAgregarComidaPescado = new javax.swing.JButton();
+        precioComidasFuertes = new javax.swing.JLabel();
+        precioComidasPescado = new javax.swing.JLabel();
+        precioComidasExoticas = new javax.swing.JLabel();
+        btnAgregarComidasFuertes = new javax.swing.JButton();
+        btnAgregarComidasExoticas = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
-        lblPrecioCantidadMariscos = new javax.swing.JLabel();
-        lblPrecioCantidad = new javax.swing.JLabel();
-        lblPrecioCantidadTacos = new javax.swing.JLabel();
-        labelIconComida = new javax.swing.JLabel();
-        labelIconBebida = new javax.swing.JLabel();
-        labelIconPostre = new javax.swing.JLabel();
+        lblPrecioCantidadPescado = new javax.swing.JLabel();
+        lblPrecioCantidadComidasExoticas = new javax.swing.JLabel();
+        lblPrecioCantidadFuertes = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -81,78 +98,88 @@ public class ComidaView extends javax.swing.JFrame {
         labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/logoRestaurante.png"))); // NOI18N
         getContentPane().add(labelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 6, -1, -1));
 
-        labelMariscos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/mariscos.jpeg"))); // NOI18N
-        getContentPane().add(labelMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 210, -1, -1));
+        labelPescado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/Pescado-Frito.jpg"))); // NOI18N
+        getContentPane().add(labelPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 210, -1, -1));
 
-        labelBebidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/refrescos.jpg"))); // NOI18N
-        getContentPane().add(labelBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+        labelComidasExoticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/Ostiones-Gratinados.jpg"))); // NOI18N
+        getContentPane().add(labelComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
-        labelPostre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/tarta.jpeg"))); // NOI18N
-        getContentPane().add(labelPostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
+        labelComidaFuerte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foodImages/CamaronesEmpanizados.png"))); // NOI18N
+        getContentPane().add(labelComidaFuerte, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
 
-        cmbComidasMariscos.addItemListener(new java.awt.event.ItemListener() {
+        cmbComidasPescado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbComidasMariscosItemStateChanged(evt);
+                cmbComidasPescadoItemStateChanged(evt);
             }
         });
-        getContentPane().add(cmbComidasMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 342, -1, -1));
+        cmbComidasPescado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbComidasPescadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbComidasPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 342, -1, -1));
 
-        cmbComidas.addItemListener(new java.awt.event.ItemListener() {
+        cmbComidasExoticas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbComidasItemStateChanged(evt);
+                cmbComidasExoticasItemStateChanged(evt);
             }
         });
-        getContentPane().add(cmbComidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+        cmbComidasExoticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbComidasExoticasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
-        cmbComidasTacos.addItemListener(new java.awt.event.ItemListener() {
+        cmbComidasFuertes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbComidasTacosItemStateChanged(evt);
+                cmbComidasFuertesItemStateChanged(evt);
             }
         });
-        getContentPane().add(cmbComidasTacos, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+        getContentPane().add(cmbComidasFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
 
-        cantidadComidasMariscos.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        getContentPane().add(cantidadComidasMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 396, -1, -1));
+        cantidadComidasPescado.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        getContentPane().add(cantidadComidasPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 396, -1, -1));
 
-        cantidadComidas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        cantidadComidas.setToolTipText("");
-        getContentPane().add(cantidadComidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
+        cantidadComidasExoticas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        cantidadComidasExoticas.setToolTipText("");
+        getContentPane().add(cantidadComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
 
-        cantidadComidasTacos.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        getContentPane().add(cantidadComidasTacos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, 20));
+        cantidadComidasFuertes.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        getContentPane().add(cantidadComidasFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, 20));
 
-        btnAgregarComidaMariscos.setText("Agregar Orden");
-        btnAgregarComidaMariscos.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarComidaPescado.setText("Agregar Orden");
+        btnAgregarComidaPescado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarComidaMariscosActionPerformed(evt);
+                btnAgregarComidaPescadoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarComidaMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 396, -1, -1));
+        getContentPane().add(btnAgregarComidaPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 396, -1, -1));
 
-        precioComidasTacos.setText("Precio");
-        getContentPane().add(precioComidasTacos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+        precioComidasFuertes.setText("Precio");
+        getContentPane().add(precioComidasFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
 
-        precioComidasMariscos.setText("Precio");
-        getContentPane().add(precioComidasMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 370, -1, -1));
+        precioComidasPescado.setText("Precio");
+        getContentPane().add(precioComidasPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 370, -1, -1));
 
-        precioComidas.setText("Precio");
-        getContentPane().add(precioComidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
+        precioComidasExoticas.setText("Precio");
+        getContentPane().add(precioComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
-        btnAgregarComidaTacos.setText("Agregar Orden");
-        btnAgregarComidaTacos.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarComidasFuertes.setText("Agregar Orden");
+        btnAgregarComidasFuertes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarComidaTacosActionPerformed(evt);
+                btnAgregarComidasFuertesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarComidaTacos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, -1, -1));
+        getContentPane().add(btnAgregarComidasFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, -1, -1));
 
-        btnAgregarComida.setText("Agregar Orden");
-        btnAgregarComida.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarComidasExoticas.setText("Agregar Orden");
+        btnAgregarComidasExoticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarComidaActionPerformed(evt);
+                btnAgregarComidasExoticasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 403, -1, -1));
+        getContentPane().add(btnAgregarComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 403, -1, -1));
 
         btnContinuar.setText("Pagar");
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,28 +189,43 @@ public class ComidaView extends javax.swing.JFrame {
         });
         getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 425, -1, -1));
 
-        lblPrecioCantidadMariscos.setText("0");
-        getContentPane().add(lblPrecioCantidadMariscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 370, -1, -1));
+        lblPrecioCantidadPescado.setText("0");
+        getContentPane().add(lblPrecioCantidadPescado, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 370, -1, -1));
 
-        lblPrecioCantidad.setText("0");
-        getContentPane().add(lblPrecioCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
+        lblPrecioCantidadComidasExoticas.setText("0");
+        getContentPane().add(lblPrecioCantidadComidasExoticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
 
-        lblPrecioCantidadTacos.setText("0");
-        getContentPane().add(lblPrecioCantidadTacos, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 50, -1));
+        lblPrecioCantidadFuertes.setText("0");
+        getContentPane().add(lblPrecioCantidadFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 50, -1));
 
-        labelIconComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
-        getContentPane().add(labelIconComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
-        labelIconBebida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
-        getContentPane().add(labelIconBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
-        labelIconPostre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
-        getContentPane().add(labelIconPostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
 
         jMenu1.setText("Usos");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
         jMenuItem1.setText("Inicio");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
@@ -206,14 +248,14 @@ public class ComidaView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void cmbComidasMariscosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasMariscosItemStateChanged
+    private void cmbComidasPescadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasPescadoItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidasMariscos.getSelectedItem();
-
+            String nombrePlatillo = (String) cmbComidasPescado.getSelectedItem();
+            
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
-            for (Comida comida : restaurante.getComidasMariscos()) {
+            for (Comida comida : restaurante.getComidasPescado()) {
                 if (comida.getNombre().equals(nombrePlatillo)) {
                     platilloSeleccionado = comida;
                     break;
@@ -223,30 +265,32 @@ public class ComidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (platilloSeleccionado != null) {
                 double precio = platilloSeleccionado.getPrecio();
-                lblPrecioCantidadMariscos.setText(String.valueOf(precio));
+                lblPrecioCantidadPescado.setText(String.valueOf(precio));
+                // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
+                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                labelPescado.setIcon(icon);
             }
         }
+    }//GEN-LAST:event_cmbComidasPescadoItemStateChanged
 
-    }//GEN-LAST:event_cmbComidasMariscosItemStateChanged
-
-    private void btnAgregarComidaMariscosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidaMariscosActionPerformed
+    private void btnAgregarComidaPescadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidaPescadoActionPerformed
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
-        (cantidadComidasMariscos.getValue().toString());
+        (cantidadComidasPescado.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
 
             Double precioElemento;
 
-            nombreElemento = cmbComidasMariscos.getSelectedItem().toString();
+            nombreElemento = cmbComidasPescado.getSelectedItem().toString();
 
-            precioElemento = Double.valueOf(lblPrecioCantidadMariscos.getText());
+            precioElemento = Double.valueOf(lblPrecioCantidadPescado.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -255,25 +299,25 @@ public class ComidaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Seleccione una cantidad");
         }
-    }//GEN-LAST:event_btnAgregarComidaMariscosActionPerformed
+    }//GEN-LAST:event_btnAgregarComidaPescadoActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         new CuentaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
-    private void btnAgregarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidaActionPerformed
+    private void btnAgregarComidasExoticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidasExoticasActionPerformed
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
-        (cantidadComidas.getValue().toString());
+        (cantidadComidasExoticas.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
 
             Double precioElemento;
 
-            nombreElemento = cmbComidas.getSelectedItem().toString();
+            nombreElemento = cmbComidasExoticas.getSelectedItem().toString();
 
-            precioElemento = Double.valueOf(lblPrecioCantidad.getText());
+            precioElemento = Double.valueOf(lblPrecioCantidadComidasExoticas.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
@@ -288,16 +332,16 @@ public class ComidaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Seleccione una cantidad");
         }
-    }//GEN-LAST:event_btnAgregarComidaActionPerformed
+    }//GEN-LAST:event_btnAgregarComidasExoticasActionPerformed
 
-    private void cmbComidasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasItemStateChanged
+    private void cmbComidasExoticasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasExoticasItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidas.getSelectedItem();
+            String nombrePlatillo = (String) cmbComidasExoticas.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
-            for (Comida comida : restaurante.getComidas()) {
+            for (Comida comida : restaurante.getComidasExoticas()) {
                 if (comida.getNombre().equals(nombrePlatillo)) {
                     platilloSeleccionado = comida;
                     break;
@@ -307,19 +351,22 @@ public class ComidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (platilloSeleccionado != null) {
                 double precio = platilloSeleccionado.getPrecio();
-                lblPrecioCantidad.setText(String.valueOf(precio));
+                lblPrecioCantidadComidasExoticas.setText(String.valueOf(precio));
+                // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
+                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                labelComidasExoticas.setIcon(icon);
             }
         }
-    }//GEN-LAST:event_cmbComidasItemStateChanged
+    }//GEN-LAST:event_cmbComidasExoticasItemStateChanged
 
-    private void cmbComidasTacosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasTacosItemStateChanged
+    private void cmbComidasFuertesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbComidasFuertesItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             // Obtén el nombre del platillo seleccionado
-            String nombrePlatillo = (String) cmbComidasTacos.getSelectedItem();
+            String nombrePlatillo = (String) cmbComidasFuertes.getSelectedItem();
 
             // Busca el platillo correspondiente en la lista de comidas
             Comida platilloSeleccionado = null;
-            for (Comida comida : restaurante.getComidasTacos()) {
+            for (Comida comida : restaurante.getComidasFuertes()) {
                 if (comida.getNombre().equals(nombrePlatillo)) {
                     platilloSeleccionado = comida;
                     break;
@@ -329,23 +376,26 @@ public class ComidaView extends javax.swing.JFrame {
             // Si se encontró el platillo, muestra su precio en el JLabel
             if (platilloSeleccionado != null) {
                 double precio = platilloSeleccionado.getPrecio();
-                lblPrecioCantidadTacos.setText(String.valueOf(precio));
+                lblPrecioCantidadFuertes.setText(String.valueOf(precio));
+                // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
+                ImageIcon icon = new ImageIcon(platilloSeleccionado.getRutaImagen()); 
+                labelComidaFuerte.setIcon(icon);
             }
         }
-    }//GEN-LAST:event_cmbComidasTacosItemStateChanged
+    }//GEN-LAST:event_cmbComidasFuertesItemStateChanged
 
-    private void btnAgregarComidaTacosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidaTacosActionPerformed
+    private void btnAgregarComidasFuertesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidasFuertesActionPerformed
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
-        (cantidadComidasTacos.getValue().toString());
+        (cantidadComidasFuertes.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
 
             Double precioElemento;
 
-            nombreElemento = cmbComidasTacos.getSelectedItem().toString();
+            nombreElemento = cmbComidasFuertes.getSelectedItem().toString();
 
-            precioElemento = Double.valueOf(lblPrecioCantidadTacos.getText());
+            precioElemento = Double.valueOf(lblPrecioCantidadFuertes.getText());
 
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
@@ -360,7 +410,31 @@ public class ComidaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Seleccione una cantidad");
         }
-    }//GEN-LAST:event_btnAgregarComidaTacosActionPerformed
+    }//GEN-LAST:event_btnAgregarComidasFuertesActionPerformed
+
+    private void cmbComidasPescadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbComidasPescadoActionPerformed
+        
+    }//GEN-LAST:event_cmbComidasPescadoActionPerformed
+
+    private void cmbComidasExoticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbComidasExoticasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbComidasExoticasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new BebidaView(recibo).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new PostreView(recibo).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        LogueoPrincipal logueo = new LogueoPrincipal();
+        logueo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public static void main(String args[]) {
         /**
@@ -386,49 +460,49 @@ public class ComidaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarComida;
-    private javax.swing.JButton btnAgregarComidaMariscos;
-    private javax.swing.JButton btnAgregarComidaTacos;
+    private javax.swing.JButton btnAgregarComidaPescado;
+    private javax.swing.JButton btnAgregarComidasExoticas;
+    private javax.swing.JButton btnAgregarComidasFuertes;
     private javax.swing.JButton btnContinuar;
-    private javax.swing.JSpinner cantidadComidas;
-    private javax.swing.JSpinner cantidadComidasMariscos;
-    private javax.swing.JSpinner cantidadComidasTacos;
-    private javax.swing.JComboBox<String> cmbComidas;
-    private javax.swing.JComboBox<String> cmbComidasMariscos;
-    private javax.swing.JComboBox<String> cmbComidasTacos;
+    private javax.swing.JSpinner cantidadComidasExoticas;
+    private javax.swing.JSpinner cantidadComidasFuertes;
+    private javax.swing.JSpinner cantidadComidasPescado;
+    private javax.swing.JComboBox<String> cmbComidasExoticas;
+    private javax.swing.JComboBox<String> cmbComidasFuertes;
+    private javax.swing.JComboBox<String> cmbComidasPescado;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JLabel labelBebidas;
-    private javax.swing.JLabel labelIconBebida;
-    private javax.swing.JLabel labelIconComida;
-    private javax.swing.JLabel labelIconPostre;
+    private javax.swing.JLabel labelComidaFuerte;
+    private javax.swing.JLabel labelComidasExoticas;
     private javax.swing.JLabel labelLogo;
-    private javax.swing.JLabel labelMariscos;
-    private javax.swing.JLabel labelPostre;
-    private javax.swing.JLabel lblPrecioCantidad;
-    private javax.swing.JLabel lblPrecioCantidadMariscos;
-    private javax.swing.JLabel lblPrecioCantidadTacos;
-    private javax.swing.JLabel precioComidas;
-    private javax.swing.JLabel precioComidasMariscos;
-    private javax.swing.JLabel precioComidasTacos;
+    private javax.swing.JLabel labelPescado;
+    private javax.swing.JLabel lblPrecioCantidadComidasExoticas;
+    private javax.swing.JLabel lblPrecioCantidadFuertes;
+    private javax.swing.JLabel lblPrecioCantidadPescado;
+    private javax.swing.JLabel precioComidasExoticas;
+    private javax.swing.JLabel precioComidasFuertes;
+    private javax.swing.JLabel precioComidasPescado;
     // End of variables declaration//GEN-END:variables
 
     private void cargarDatos() {
 
-        for (Comida comida : restaurante.getComidasMariscos()) {
-            cmbComidasMariscos.addItem(comida.getNombre());
-            lblPrecioCantidadMariscos.setText(String.valueOf(comida.getPrecio()));
+        for (Comida comida : restaurante.getComidasPescado()) {
+            cmbComidasPescado.addItem(comida.getNombre());
+            lblPrecioCantidadPescado.setText(String.valueOf(comida.getPrecio()));
         }
-        for (Comida comida1 : restaurante.getComidas()) {
-            cmbComidas.addItem(comida1.getNombre());
-            lblPrecioCantidad.setText(String.valueOf(comida1.getPrecio()));
+        for (Comida comida1 : restaurante.getComidasExoticas()) {
+            cmbComidasExoticas.addItem(comida1.getNombre());
+            lblPrecioCantidadComidasExoticas.setText(String.valueOf(comida1.getPrecio()));
         }
 
-        for (Comida comida2 : restaurante.getComidasTacos()) {
-            cmbComidasTacos.addItem(comida2.getNombre());
-            lblPrecioCantidadTacos.setText(String.valueOf(comida2.getPrecio()));
+        for (Comida comida2 : restaurante.getComidasFuertes()) {
+            cmbComidasFuertes.addItem(comida2.getNombre());
+            lblPrecioCantidadFuertes.setText(String.valueOf(comida2.getPrecio()));
         }
     }
 }

@@ -9,6 +9,12 @@ package model;
 import entity.ElementoMenu;
 
 public class ElementoMenuModelImpl implements IElementoMenuModel{
+    
+    /**
+     * El método "crearRegistro" no recibe parámetros y simplemente crea y 
+     * devuelve un nuevo objeto "ElementoMenu" vacío. 
+     * @return 
+     */
     @Override
     public ElementoMenu crearRegistro(){
         return new ElementoMenu();

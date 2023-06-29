@@ -10,5 +10,10 @@ import entity.Restaurante;
 
 public interface IRestauranteModel {
 
+    /**
+     * CrearRegistro, que se encarga de crear y devolver un nuevo objeto de 
+     * tipo Restaurante.
+     * @return 
+     */
     public Restaurante crearRegistro();
 }

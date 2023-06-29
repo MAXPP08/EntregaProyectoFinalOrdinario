@@ -39,11 +39,10 @@ public class ElementoMenu {
     }
 
     public Double getPrecioTotal() {
-        return precio;
+        return precio*cantidad;
     }
 
     public void setPrecio(Double precioTotal) {
         this.precio = precioTotal;
     }
-
 }

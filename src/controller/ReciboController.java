@@ -26,9 +26,23 @@ public class ReciboController {
         service.agregarElemento(recibo, elemento);
     }
 
-    //El método que imprime el recivo
+    //El método que imprime el recibo
     public void imprimirRecibo(Recibo recibo, DefaultTableModel modelo) {
         service.imprimirRecibo(recibo, modelo);
     }
 
+    //El método que elimina el recibo
+    public void eliminarRecibo(int id, Recibo recibo) {
+        if (!recibo.getElementos().isEmpty()) {
+            service.eliminarRegistro(id, recibo);
+        }
+    }
+
+    //El método que genera el recibo
+    public double generarCuenta(Recibo recibo) {
+        if (recibo.getElementos().isEmpty()) {
+            return 0;
+        }
+        return service.generarCuenta(recibo);
+    }
 }

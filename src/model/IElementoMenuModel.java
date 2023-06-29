@@ -9,5 +9,11 @@ package model;
 import entity.ElementoMenu;
 
 public interface IElementoMenuModel{
+    
+    /**
+     * crearRegistro() que se encarga de crear y devolver un objeto de tipo
+     * ElementoMenu.
+     * @return 
+     */
    public ElementoMenu crearRegistro(); 
 }
