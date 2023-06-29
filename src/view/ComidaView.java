@@ -33,14 +33,18 @@ public class ComidaView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-
+        /* Crear una instancia del controlador de restaurante y crear un nuevo 
+            registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
-
+        /* Crear una instancia del controlador de recibo y crear un nuevo 
+        registro de recibo*/
         this.controllerRecibo = new ReciboController();
         this.recibo = controllerRecibo.crearRegistro();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
     }
 
@@ -49,13 +53,16 @@ public class ComidaView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.recibo = recibo;
+        /* Crear una instancia del controlador de restaurante y crear un 
+            nuevo registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerRecibo = new ReciboController();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
-
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
     }
 
@@ -83,9 +90,9 @@ public class ComidaView extends javax.swing.JFrame {
         lblPrecioCantidadPescado = new javax.swing.JLabel();
         lblPrecioCantidadComidasExoticas = new javax.swing.JLabel();
         lblPrecioCantidadFuertes = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnEnlaceComida = new javax.swing.JButton();
+        btnEnlaceBebida = new javax.swing.JButton();
+        btnEnlacePostre = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -197,24 +204,24 @@ public class ComidaView extends javax.swing.JFrame {
         lblPrecioCantidadFuertes.setText("0");
         getContentPane().add(lblPrecioCantidadFuertes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 50, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        btnEnlaceComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
+        getContentPane().add(btnEnlaceComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEnlaceBebida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
+        btnEnlaceBebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEnlaceBebidaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        getContentPane().add(btnEnlaceBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEnlacePostre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
+        btnEnlacePostre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEnlacePostreActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
+        getContentPane().add(btnEnlacePostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
 
         jMenu1.setText("Usos");
 
@@ -274,6 +281,16 @@ public class ComidaView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbComidasPescadoItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarComidaPescadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidaPescadoActionPerformed
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
@@ -301,26 +318,40 @@ public class ComidaView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarComidaPescadoActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // Enlace a CuentaView
         new CuentaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento 
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente, 
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación. 
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarComidasExoticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidasExoticasActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
         (cantidadComidasExoticas.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
             Double precioElemento;
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbComidasExoticas.getSelectedItem().toString();
+            // Obtener el precio del elemento desde la etiqueta correspondiente
             precioElemento = Double.valueOf
             (lblPrecioCantidadComidasExoticas.getText());
-
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            // Agregar el elemento al recibo
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -386,25 +417,35 @@ public class ComidaView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbComidasFuertesItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente, 
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación. 
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarComidasFuertesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarComidasFuertesActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
         cantidadElemento = Integer.parseInt
         (cantidadComidasFuertes.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
-
             Double precioElemento;
-
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbComidasFuertes.getSelectedItem().toString();
-
+            // Obtener el precio del elemento desde la etiqueta correspondiente
             precioElemento = Double.valueOf
             (lblPrecioCantidadFuertes.getText());
-
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            // Agregar el elemento al recibo
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -423,17 +464,18 @@ public class ComidaView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbComidasExoticasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEnlaceBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlaceBebidaActionPerformed
         new BebidaView(recibo).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEnlaceBebidaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEnlacePostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlacePostreActionPerformed
         new PostreView(recibo).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEnlacePostreActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // Enlace a Logeo
         LogueoPrincipal logueo = new LogueoPrincipal();
         logueo.setVisible(true);
         dispose();
@@ -467,15 +509,15 @@ public class ComidaView extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarComidasExoticas;
     private javax.swing.JButton btnAgregarComidasFuertes;
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnEnlaceBebida;
+    private javax.swing.JButton btnEnlaceComida;
+    private javax.swing.JButton btnEnlacePostre;
     private javax.swing.JSpinner cantidadComidasExoticas;
     private javax.swing.JSpinner cantidadComidasFuertes;
     private javax.swing.JSpinner cantidadComidasPescado;
     private javax.swing.JComboBox<String> cmbComidasExoticas;
     private javax.swing.JComboBox<String> cmbComidasFuertes;
     private javax.swing.JComboBox<String> cmbComidasPescado;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -492,8 +534,10 @@ public class ComidaView extends javax.swing.JFrame {
     private javax.swing.JLabel precioComidasPescado;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Cargar las comidas en el ComboBox y establecer el precio
+     */
     private void cargarDatos() {
-
         for (Comida comida : restaurante.getComidasPescado()) {
             cmbComidasPescado.addItem(comida.getNombre());
             lblPrecioCantidadPescado.setText
@@ -504,7 +548,6 @@ public class ComidaView extends javax.swing.JFrame {
             lblPrecioCantidadComidasExoticas.setText
             (String.valueOf(comida1.getPrecio()));
         }
-
         for (Comida comida2 : restaurante.getComidasFuertes()) {
             cmbComidasFuertes.addItem(comida2.getNombre());
             lblPrecioCantidadFuertes.setText
