@@ -320,12 +320,32 @@ public class BebidaView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarBebidaNaturalActionPerformed
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // Enlace a Pagar
         new CuentaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarBebidaCarbonatadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBebidaCarbonatadaActionPerformed
         // Obtener la cantidad seleccionada
         int cantidadElemento;
@@ -411,6 +431,16 @@ public class BebidaView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbBebidaAlcoholicaItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarBebidaAlcoholicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBebidaAlcoholicaActionPerformed
         // Obtener la cantidad seleccionada
         int cantidadElemento;
@@ -521,10 +551,9 @@ public class BebidaView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Método encargado de cargar todos los datos
+     * Cargar las comidas en el ComboBox y establecer el precio
      */
     private void cargarDatos() {
-        
         for (Bebida bebida : restaurante.getBebidasNaturales()) {
             cmbBebidaNutural.addItem(bebida.getNombre());
             lblBebidaNatural.setText(String.valueOf(bebida.getPrecio()));

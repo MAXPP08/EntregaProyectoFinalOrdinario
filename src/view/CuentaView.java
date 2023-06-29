@@ -6,9 +6,7 @@
  */
 package view;
 
-import controller.ElementoMenuController;
 import controller.ReciboController;
-import entity.ElementoMenu;
 import entity.Recibo;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
@@ -245,6 +243,11 @@ public class CuentaView extends javax.swing.JFrame {
         CampoTotalAPagar.setText(Double.valueOf(pagarCuenta).toString());
     }//GEN-LAST:event_btnGenerarCuentaActionPerformed
 
+    /**
+     * Este método permite al usuario eliminar un registro del recibo, 
+     * actualiza la tabla y muestra el total a pagar actualizado.
+     * @param evt 
+     */
     private void btnEliminarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarRegistroActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tblRecibo.getModel();
         int filaSeleccionada = tblRecibo.getSelectedRow();
@@ -262,13 +265,19 @@ public class CuentaView extends javax.swing.JFrame {
         double pagarCuenta;
         pagarCuenta = controllerRecibo.generarCuenta(recibo);
 
-        CampoTotalAPagar.setText(new DecimalFormat("0.00").format(pagarCuenta));
+        CampoTotalAPagar.setText(new DecimalFormat("0.00").format(
+                pagarCuenta));
     }//GEN-LAST:event_btnEliminarRegistroActionPerformed
 
     private void tblReciboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReciboMouseClicked
-        int filaSeleccionada = tblRecibo.getSelectedRow();
+        
     }//GEN-LAST:event_tblReciboMouseClicked
 
+    /**
+     * Este método permite al usuario cancelar la operación actual y regresar a
+     * la pantalla de inicio de sesión.
+     * @param evt 
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int opcion = JOptionPane.showConfirmDialog(null,
                 "Usted sera enviado al Logueo", "Confirmación",
@@ -305,36 +314,56 @@ public class CuentaView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    /**
+     * Este método se encarga de realizar las operaciones de pago, validar los
+     * campos ingresados y proporcionar información al usuario sobre el
+     * resultado de la transacción.
+     * @param evt 
+     */
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         //Se llevan a cabo las operaciones de pago por parte del usuario y 
         //válida los campos
         
         if (CampoTotalAPagar.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No existen pedidos agregados");
+            JOptionPane.showMessageDialog(null, 
+                    "No existen pedidos agregados");
         } else {
-            String cantidadProporcionadaText = campoCantidadProporcionada.getText().trim();
+            String cantidadProporcionadaText = 
+                    campoCantidadProporcionada.getText().trim();
             if (cantidadProporcionadaText.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Ingrese un valor para la cantidad proporcionada");
+                JOptionPane.showMessageDialog(null, 
+                "Ingrese un valor para la cantidad proporcionada");
             } else if (!cantidadProporcionadaText.matches("\\d*")) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo números en la cantidad proporcionada");
+                // Verificar si la cantidad proporcionada contiene caracteres no numéricos
+                JOptionPane.showMessageDialog(null, 
+                "Ingrese solo números en la cantidad proporcionada");
             } else {
+                // Convertir la cantidad proporcionada y el total a números
                 double pago = Double.parseDouble(cantidadProporcionadaText);
                 double total = Double.parseDouble(CampoTotalAPagar.getText());
 
                 if (total > pago) {
-                    JOptionPane.showMessageDialog(null, "El pago es menor a la cuenta total, ingrese un valor mayor");
+                    JOptionPane.showMessageDialog(null, 
+                    "El pago es menor a la cuenta total, "
+                            + "ingrese un valor mayor");
                 } else {
                     double cambio = pago - total;
-                    campoCambio.setText(new DecimalFormat("0.00").format(cambio));
-                    JOptionPane.showMessageDialog(null, "Gracias por su preferencia");
+                    campoCambio.setText(new 
+                    DecimalFormat("0.00").format(cambio));
+                    JOptionPane.showMessageDialog(null, 
+                            "Gracias por su preferencia");
                 }
             }
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
     public static void main(String args[]) {
+        /**
+         * Implementación de libreria jtattoo para el diseño de ventanas
+         */
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+            UIManager.setLookAndFeel
+            ("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
 
         } catch (InstantiationException ex) {

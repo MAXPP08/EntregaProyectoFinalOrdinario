@@ -25,7 +25,6 @@ public class PostreView extends javax.swing.JFrame {
     private Restaurante restaurante;
     private ReciboController controllerRecibo;
     private Recibo recibo;
-
     private ElementoMenuController controllerElementoMenu;
     private ElementoMenu elemento;
 
@@ -33,14 +32,18 @@ public class PostreView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
-
+        /* Crear una instancia del controlador de restaurante y crear un nuevo 
+            registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
-
+        /* Crear una instancia del controlador de recibo y crear un nuevo 
+        registro de recibo*/
         this.controllerRecibo = new ReciboController();
         this.recibo = controllerRecibo.crearRegistro();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
     }
 
@@ -49,13 +52,16 @@ public class PostreView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.recibo = recibo;
+        /* Crear una instancia del controlador de restaurante y crear un 
+            nuevo registro de restaurante
+        */
         this.controllerRestaurante = new RestauranteController();
         this.restaurante = controllerRestaurante.crearRegistro();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerRecibo = new ReciboController();
-
+        // Crear una instancia del controlador de elemento del menú
         this.controllerElementoMenu = new ElementoMenuController();
-
+        // Cargar los datos de las comidas en los ComboBox correspondientes
         cargarDatos();
     }
 
@@ -83,13 +89,13 @@ public class PostreView extends javax.swing.JFrame {
         lblPastel = new javax.swing.JLabel();
         lblPrecioCantidadTarta = new javax.swing.JLabel();
         lblPrecioFlan = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        btnEnlaceComida = new javax.swing.JButton();
+        btnEnlaceBebida = new javax.swing.JButton();
+        btnEnlacePostre = new javax.swing.JButton();
+        miMenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuInicio = new javax.swing.JMenuItem();
+        menuMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,55 +203,55 @@ public class PostreView extends javax.swing.JFrame {
         lblPrecioFlan.setText("0");
         getContentPane().add(lblPrecioFlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 50, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEnlaceComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/comida.png"))); // NOI18N
+        btnEnlaceComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEnlaceComidaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        getContentPane().add(btnEnlaceComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEnlaceBebida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/bebida.png"))); // NOI18N
+        btnEnlaceBebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEnlaceBebidaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
+        getContentPane().add(btnEnlaceBebida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
+        btnEnlacePostre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/postre.png"))); // NOI18N
+        getContentPane().add(btnEnlacePostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
         jMenu1.setText("Usos");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
-        jMenuItem1.setText("Inicio");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/hogar.png"))); // NOI18N
+        menuInicio.setText("Inicio");
+        menuInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuInicioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(menuInicio);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
-        jMenuItem2.setText("Menú");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconImages/menu.png"))); // NOI18N
+        menuMenu.setText("Menú");
+        menuMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(menuMenu);
 
-        jMenuBar1.add(jMenu1);
+        miMenu.add(jMenu1);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(miMenu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMenuActionPerformed
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuMenuActionPerformed
 
     private void cmbPastelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPastelItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -266,15 +272,27 @@ public class PostreView extends javax.swing.JFrame {
                 double precio = postreSeleccionado.getPrecio();
                 lblPastel.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(postreSeleccionado.getRutaImagen());
+                ImageIcon icon = new ImageIcon
+                (postreSeleccionado.getRutaImagen());
                 labelPastel.setIcon(icon);
             }
         }
     }//GEN-LAST:event_cmbPastelItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarPastelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPastelActionPerformed
         int cantidadElemento;
-        cantidadElemento = Integer.parseInt(cantidadPastel.getValue().toString());
+        cantidadElemento = Integer.parseInt
+        (cantidadPastel.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
 
@@ -300,13 +318,26 @@ public class PostreView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarPastelActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // Enlace a Cuenta
         new CuentaView(recibo).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarTartaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTartaActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
-        cantidadElemento = Integer.parseInt(cantidadTarta.getValue().toString());
+        cantidadElemento = Integer.parseInt
+        (cantidadTarta.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
             Double precioElemento;
@@ -348,7 +379,8 @@ public class PostreView extends javax.swing.JFrame {
                 double precio = postreSeleccionado.getPrecio();
                 lblPrecioCantidadTarta.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(postreSeleccionado.getRutaImagen());
+                ImageIcon icon = new ImageIcon
+                (postreSeleccionado.getRutaImagen());
                 labelTarta.setIcon(icon);
             }
         }
@@ -373,27 +405,41 @@ public class PostreView extends javax.swing.JFrame {
                 double precio = postreSeleccionado.getPrecio();
                 lblPrecioFlan.setText(String.valueOf(precio));
                 // Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
-                ImageIcon icon = new ImageIcon(postreSeleccionado.getRutaImagen());
+                ImageIcon icon = new ImageIcon
+                (postreSeleccionado.getRutaImagen());
                 labelFlan.setIcon(icon);
             }
         }
     }//GEN-LAST:event_cmbFlanItemStateChanged
 
+    /**
+     * El código obtiene la cantidad seleccionada del campo correspondiente y 
+     * verifica si es mayor que cero. Luego, se obtiene el nombre y el precio 
+     * del elemento seleccionado en los ComboBox y las etiquetas 
+     * correspondientes. A continuación, se crea un nuevo registro de elemento
+     * y se establecen sus propiedades con los valores obtenidos. Finalmente,
+     * el elemento se agrega al recibo y se muestra un mensaje de confirmación.
+     * Si la cantidad seleccionada es cero, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnAgregarFlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFlanActionPerformed
+        // Obtener la cantidad seleccionada
         int cantidadElemento;
-        cantidadElemento = Integer.parseInt(cantidadFlan.getValue().toString());
+        cantidadElemento = Integer.parseInt
+        (cantidadFlan.getValue().toString());
         if (cantidadElemento > 0) {
             String nombreElemento;
             Double precioElemento;
-
+            // Obtener el nombre del elemento seleccionado en el ComboBox
             nombreElemento = cmbFlan.getSelectedItem().toString();
+            // Obtener el precio del elemento desde la etiqueta correspondiente
             precioElemento = Double.valueOf(lblPrecioFlan.getText());
-
+            // Crear un nuevo registro de elemento
             elemento = controllerElementoMenu.crearRegistro();
             elemento.setCantidad(cantidadElemento);
             elemento.setNombre(nombreElemento);
             elemento.setPrecio(precioElemento);
-
+            // Agregar el elemento al recibo      
             this.controllerRecibo.agregarElemento(recibo, elemento);
 
             JOptionPane.showMessageDialog(null,
@@ -412,28 +458,32 @@ public class PostreView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbTartaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEnlaceComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlaceComidaActionPerformed
+        // Enlace a ComidaView
         new ComidaView(recibo).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEnlaceComidaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEnlaceBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnlaceBebidaActionPerformed
+        // Enlace a BebidaView
         new BebidaView(recibo).setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEnlaceBebidaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
+        // Enlace a Logeo
         LogueoPrincipal logueo = new LogueoPrincipal();
         logueo.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuInicioActionPerformed
 
     public static void main(String args[]) {
         /**
          * Implementación de libreria jtattoo para el diseño de ventanas
          */
         try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+            UIManager.setLookAndFeel
+            ("com.jtattoo.plaf.texture.TextureLookAndFeel");
         } catch (ClassNotFoundException ex) {
 
         } catch (InstantiationException ex) {
@@ -455,19 +505,16 @@ public class PostreView extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarPastel;
     private javax.swing.JButton btnAgregarTarta;
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnEnlaceBebida;
+    private javax.swing.JButton btnEnlaceComida;
+    private javax.swing.JButton btnEnlacePostre;
     private javax.swing.JSpinner cantidadFlan;
     private javax.swing.JSpinner cantidadPastel;
     private javax.swing.JSpinner cantidadTarta;
     private javax.swing.JComboBox<String> cmbFlan;
     private javax.swing.JComboBox<String> cmbPastel;
     private javax.swing.JComboBox<String> cmbTarta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel labelFlan;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelPastel;
@@ -475,11 +522,17 @@ public class PostreView extends javax.swing.JFrame {
     private javax.swing.JLabel lblPastel;
     private javax.swing.JLabel lblPrecioCantidadTarta;
     private javax.swing.JLabel lblPrecioFlan;
+    private javax.swing.JMenuItem menuInicio;
+    private javax.swing.JMenuItem menuMenu;
+    private javax.swing.JMenuBar miMenu;
     private javax.swing.JLabel precioFlan;
     private javax.swing.JLabel precioPastel;
     private javax.swing.JLabel precioTarta;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Cargar las comidas en el ComboBox y establecer el precio
+     */
     private void cargarDatos() {
         for (Postre postre : restaurante.getPostresPastel()) {
             cmbPastel.addItem(postre.getNombre());
